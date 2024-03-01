@@ -1,6 +1,6 @@
 order;tv;2;2000;0;1500
 order;computer;4;8000;1;1500
-order;computer;2;5000;2;1501
+order;computer;2;5000;25;1501
 order;smartphone;0;5000;2;1501
 order;smartphone;2;3000;3;1502
 retail_customer;yakup;genc;kocaeli;+902626052201;1500;500

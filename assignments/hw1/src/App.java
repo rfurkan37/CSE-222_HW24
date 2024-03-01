@@ -54,9 +54,11 @@ public class App {
         }
     }
 
-    public static int check(int num) throws Exception {
+    public static int check(int num, int statusFlag) throws Exception {
         if (num <= 0) {
             throw new Exception("Number is less than or equal to 0.");
+        } else if (statusFlag == 1 && num > 3) {
+            throw new Exception("Status is invalid.");
         } else {
             return num;
         }
@@ -105,9 +107,9 @@ public class App {
                     Order newOrder = null;
 
                     try {
-                        newOrder = new Order(check(dataStrings[1]), check(Integer.parseInt(dataStrings[2])),
-                                check(Integer.parseInt(dataStrings[3])), check(Integer.parseInt(dataStrings[4])),
-                                check(Integer.parseInt(dataStrings[5])));
+                        newOrder = new Order(check(dataStrings[1]), check(Integer.parseInt(dataStrings[2]), 0),
+                                check(Integer.parseInt(dataStrings[3]), 0), check(Integer.parseInt(dataStrings[4]), 1),
+                                check(Integer.parseInt(dataStrings[5]), 0));
                     } catch (Exception e) {
                         System.out.println("Error creating Order: " + e.getMessage());
                     }
@@ -121,8 +123,8 @@ public class App {
                     try {
                         newRetailCustomer = new RetailCustomer(check(dataStrings[1]), check(dataStrings[2]),
                                 check(dataStrings[3]),
-                                check(dataStrings[4]), check(Integer.parseInt(dataStrings[5])),
-                                check(Integer.parseInt(dataStrings[6])));
+                                check(dataStrings[4]), check(Integer.parseInt(dataStrings[5]), 0),
+                                check(Integer.parseInt(dataStrings[6]), 0));
                     } catch (Exception e) {
                         System.out.println("Error creating RetailCustomer: " + e.getMessage());
                     }
@@ -135,8 +137,8 @@ public class App {
 
                     try {
                         newCorporateCustomer = new CorporateCustomer(check(dataStrings[1]), check(dataStrings[2]),
-                                check(dataStrings[3]), check(dataStrings[4]), check(Integer.parseInt(dataStrings[5])),
-                                check(Integer.parseInt(dataStrings[6])), check(dataStrings[7]));
+                                check(dataStrings[3]), check(dataStrings[4]), check(Integer.parseInt(dataStrings[5]), 0),
+                                check(Integer.parseInt(dataStrings[6]), 0), check(dataStrings[7]));
 
                     } catch (Exception e) {
                         System.out.println("Error creating CorporateCustomer: " + e.getMessage());
@@ -149,8 +151,8 @@ public class App {
 
                     try {
                         newOperator = new Operator(check(dataStrings[1]), check(dataStrings[2]), check(dataStrings[3]),
-                                check(dataStrings[4]), check(Integer.parseInt(dataStrings[5])),
-                                check(Integer.parseInt(dataStrings[6])));
+                                check(dataStrings[4]), check(Integer.parseInt(dataStrings[5]), 0),
+                                check(Integer.parseInt(dataStrings[6]), 0));
                     } catch (Exception e) {
                         System.out.println("Error creating Operator: " + e.getMessage());
                     }

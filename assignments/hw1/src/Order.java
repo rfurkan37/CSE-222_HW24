@@ -14,7 +14,7 @@ public class Order {
         this.customer_ID = customer_ID;
     }
 
-    private String statusToString(int status) {
+    private String statusToString(int status) throws Exception {
 
         switch (status) {
             case 0:
@@ -26,14 +26,19 @@ public class Order {
             case 3:
                 return "Cancelled.";
             default:
-                return "Unknown.";
+                throw new Exception("Invalid status.");
         }
     }
 
     public void print_order() {
 
-        System.out.print("Product Name: " + this.product_name + " - Count: " + this.count + " - Total Price: "
-                + this.total_price + " - Status: " + this.statusToString(this.status) + "\n");
+        try {
+            System.out.print("Product Name: " + this.product_name + " - Count: " + this.count + " - Total Price: "
+                    + this.total_price + " - Status: " + this.statusToString(this.status) + "\n");
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 
