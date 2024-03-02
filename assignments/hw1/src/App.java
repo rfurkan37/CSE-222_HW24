@@ -48,19 +48,28 @@ public class App {
 
     public static String check(String str) throws Exception {
         if (str == null) {
-            throw new Exception("String is null.");
+            throw new Exception();
         } else {
             return str;
         }
     }
 
     public static int check(int num, int statusFlag) throws Exception {
-        if (num <= 0) {
-            throw new Exception("Number is less than or equal to 0.");
-        } else if (statusFlag == 1 && num > 3) {
-            throw new Exception("Status is invalid.");
-        } else {
-            return num;
+        switch (statusFlag) {
+            case 0:
+                if (num <= 0) {
+                    throw new Exception();
+                } else {
+                    return num;
+                }
+            case 1:
+                if (num < 0 || num > 3) {
+                    throw new Exception();
+                } else {
+                    return num;
+                }
+            default:
+                throw new Exception();
         }
     }
 
@@ -71,7 +80,7 @@ public class App {
                 customerIndex++;
             }
         } catch (Exception e) {
-            System.out.println("Error adding customer: " + e.getMessage());
+
         }
     }
 
@@ -82,7 +91,6 @@ public class App {
                 operatorIndex++;
             }
         } catch (Exception e) {
-            System.out.println("Error adding operator: " + e.getMessage());
         }
     }
 
@@ -93,14 +101,14 @@ public class App {
                 orderIndex++;
             }
         } catch (Exception e) {
-            System.out.println("Error adding order: " + e.getMessage());
+
         }
     }
 
     public static void getDataFromLine(String[] dataStrings) throws Exception {
 
         if (dataStrings == null) {
-            throw new Exception("dataStrings is null.");
+
         } else {
             switch (dataStrings[0]) {
                 case "order":
@@ -111,7 +119,7 @@ public class App {
                                 check(Integer.parseInt(dataStrings[3]), 0), check(Integer.parseInt(dataStrings[4]), 1),
                                 check(Integer.parseInt(dataStrings[5]), 0));
                     } catch (Exception e) {
-                        System.out.println("Error creating Order: " + e.getMessage());
+
                     }
 
                     addOrder(newOrder);
@@ -126,7 +134,7 @@ public class App {
                                 check(dataStrings[4]), check(Integer.parseInt(dataStrings[5]), 0),
                                 check(Integer.parseInt(dataStrings[6]), 0));
                     } catch (Exception e) {
-                        System.out.println("Error creating RetailCustomer: " + e.getMessage());
+
                     }
 
                     addCustomer(newRetailCustomer);
@@ -137,11 +145,12 @@ public class App {
 
                     try {
                         newCorporateCustomer = new CorporateCustomer(check(dataStrings[1]), check(dataStrings[2]),
-                                check(dataStrings[3]), check(dataStrings[4]), check(Integer.parseInt(dataStrings[5]), 0),
+                                check(dataStrings[3]), check(dataStrings[4]),
+                                check(Integer.parseInt(dataStrings[5]), 0),
                                 check(Integer.parseInt(dataStrings[6]), 0), check(dataStrings[7]));
 
                     } catch (Exception e) {
-                        System.out.println("Error creating CorporateCustomer: " + e.getMessage());
+
                     }
                     addCustomer(newCorporateCustomer);
                     break;
@@ -154,7 +163,7 @@ public class App {
                                 check(dataStrings[4]), check(Integer.parseInt(dataStrings[5]), 0),
                                 check(Integer.parseInt(dataStrings[6]), 0));
                     } catch (Exception e) {
-                        System.out.println("Error creating Operator: " + e.getMessage());
+
                     }
 
                     if (checkDouble(newOperator) == 1)
@@ -181,7 +190,7 @@ public class App {
                 getDataFromLine(tokens);
             }
         } catch (Exception e) {
-            System.out.println("Input file not found.");
+
         } finally {
             scanner.close();
         }
@@ -212,6 +221,7 @@ public class App {
         for (Operator operator : allOperators) {
             if (operator != null && operator.ID == ID) {
                 flag = 1;
+                System.out.println("*** Operator Screen ***");
                 operator.print_operator();
             }
         }
@@ -220,12 +230,13 @@ public class App {
             for (Customer customer : allCustomers) {
                 if (customer != null && customer.ID == ID) {
                     flag = 1;
+                    System.out.println("*** Customer Screen ***");
                     customer.print_customer();
                 }
             }
 
             if (flag == 0)
-                System.out.println("There is no operator or customer with this ID.");
+                System.out.println("No operator/customer found with ID " + ID +". Please try again.");
         }
 
         scanner.close();

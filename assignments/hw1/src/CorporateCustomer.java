@@ -17,7 +17,6 @@ public class CorporateCustomer extends Customer {
         System.out.println("Operator ID: " + this.operator_ID);
         System.out.println("Company Name: " + this.company_name);
         print_orders();
-        System.out.println("----------------------------");
     }
 
 }

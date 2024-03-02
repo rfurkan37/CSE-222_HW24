@@ -24,7 +24,6 @@ public class Customer extends Person {
         System.out.println("ID: " + this.ID);
         System.out.println("Operator ID: " + this.operator_ID);
         print_orders();
-        System.out.println("----------------------------");
     }
 
     public void print_orders() {

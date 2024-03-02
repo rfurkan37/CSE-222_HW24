@@ -26,7 +26,7 @@ public class Order {
             case 3:
                 return "Cancelled.";
             default:
-                throw new Exception("Invalid status.");
+                throw new Exception();
         }
     }
 
@@ -37,7 +37,6 @@ public class Order {
                     + this.total_price + " - Status: " + this.statusToString(this.status) + "\n");
             
         } catch (Exception e) {
-            System.out.println(e.getMessage());
         }
 
     }

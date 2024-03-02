@@ -10,7 +10,6 @@ public class Operator extends Person {
 
     public void print_operator() {
 
-        System.out.println("*** Operator Screen ***");
         System.out.println("----------------------------");
         System.out.println("Name & Surname: " + this.name + " " + this.surname);
         System.out.println("Address: " + this.address);
@@ -37,6 +36,8 @@ public class Operator extends Person {
                 System.out.print(" (a corporate customer):\n");
             }
             customers[i].print_customer();
+            System.out.println("----------------------------");
+                
         }
 
     }
