@@ -16,7 +16,13 @@ public class CorporateCustomer extends Customer {
         System.out.println("ID: " + this.ID);
         System.out.println("Operator ID: " + this.operator_ID);
         System.out.println("Company Name: " + this.company_name);
-        print_orders();
+        if (getIndex() > 0) {
+            print_orders();
+        }
+        else
+        {
+            System.out.println("No orders found.");
+        }
     }
 
 }

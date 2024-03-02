@@ -112,6 +112,10 @@ public class App {
         } else {
             switch (dataStrings[0]) {
                 case "order":
+
+                    if (dataStrings.length != 6) {
+                        break;
+                    }
                     Order newOrder = null;
 
                     try {
@@ -126,6 +130,9 @@ public class App {
                     break;
 
                 case "retail_customer":
+                    if (dataStrings.length != 7) {
+                        break;
+                    }
                     RetailCustomer newRetailCustomer = null;
 
                     try {
@@ -141,6 +148,9 @@ public class App {
                     break;
 
                 case "corporate_customer":
+                    if (dataStrings.length != 8) {
+                        break;
+                    }
                     CorporateCustomer newCorporateCustomer = null;
 
                     try {
@@ -156,6 +166,9 @@ public class App {
                     break;
 
                 case "operator":
+                    if (dataStrings.length != 7) {
+                        break;
+                    }
                     Operator newOperator = null;
 
                     try {
@@ -215,31 +228,36 @@ public class App {
     public static void userInput() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter your ID...");
-        int ID = scanner.nextInt();
-        int flag = 0;
 
-        for (Operator operator : allOperators) {
-            if (operator != null && operator.ID == ID) {
-                flag = 1;
-                System.out.println("*** Operator Screen ***");
-                operator.print_operator();
-            }
-        }
+        try {
+            int ID = scanner.nextInt();
+            int flag = 0;
 
-        if (flag == 0) {
-            for (Customer customer : allCustomers) {
-                if (customer != null && customer.ID == ID) {
+            for (Operator operator : allOperators) {
+                if (operator != null && operator.ID == ID) {
                     flag = 1;
-                    System.out.println("*** Customer Screen ***");
-                    customer.print_customer();
+                    System.out.println("*** Operator Screen ***");
+                    operator.print_operator();
                 }
             }
 
-            if (flag == 0)
-                System.out.println("No operator/customer found with ID " + ID +". Please try again.");
-        }
+            if (flag == 0) {
+                for (Customer customer : allCustomers) {
+                    if (customer != null && customer.ID == ID) {
+                        flag = 1;
+                        System.out.println("*** Customer Screen ***");
+                        customer.print_customer();
+                    }
+                }
 
-        scanner.close();
+                if (flag == 0)
+                    System.out.println("No operator/customer found with ID " + ID + ". Please try again.");
+            }
+        } catch (Exception e) {
+            System.out.println("Invalid input. Please enter a valid ID.");
+        } finally {
+            scanner.close();
+        }
     }
 
     public static void main(String[] args) throws Exception {

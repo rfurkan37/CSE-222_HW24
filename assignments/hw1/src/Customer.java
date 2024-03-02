@@ -16,6 +16,10 @@ public class Customer extends Person {
         }
     }
 
+    public int getIndex(){
+        return orderIndex;
+    }
+
     public void print_customer() {
 
         System.out.println("Name & Surname: " + this.name + " " + this.surname);
@@ -23,7 +27,13 @@ public class Customer extends Person {
         System.out.println("Phone: " + this.phone);
         System.out.println("ID: " + this.ID);
         System.out.println("Operator ID: " + this.operator_ID);
-        print_orders();
+        if (orderIndex > 0) {
+            print_orders();
+        }
+        else
+        {
+            System.out.println("No orders found.");
+        }
     }
 
     public void print_orders() {
