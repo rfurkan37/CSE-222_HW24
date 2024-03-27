@@ -24,11 +24,7 @@ public class Headphones implements Device {
         this.category = "Headphones";
     }
 
-    /**
-     * Returns the category of this device.
-     *
-     * @return the category of this device
-     */
+     
     public String getCategory() {
         return category;
     }

@@ -8,8 +8,8 @@ import java.util.Scanner;
  * export devices in the inventory.
  */
 public class App {
-    private static Inventory inventory = new Inventory();
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Inventory inventory = new Inventory();
+    private static final Scanner scanner = new Scanner(System.in);
 
     /**
      * Adds a new device to the inventory.
@@ -103,10 +103,8 @@ public class App {
             }
         } while (deviceToRemove == null);
 
-        if (deviceToRemove != null) {
-            inventory.removeDevice(deviceToRemove);
-            System.out.println("Device removed successfully.");
-        }
+        inventory.removeDevice(deviceToRemove);
+        System.out.println("Device removed successfully.");
     }
 
     private static void updateDevice() {
@@ -143,9 +141,7 @@ public class App {
             }
         }
 
-        if (deviceUpdateDetails != null) {
-            inventory.updateDevice(deviceUpdateDetails);
-        }
+        inventory.updateDevice(deviceUpdateDetails);
 
         System.out.println(
                 deviceUpdateDetails.getName() + "details updated : Price - "
@@ -291,18 +287,14 @@ public class App {
         category.replaceAll("\\s", "");
         category.toLowerCase();
 
-        if (category.equals("tv"))
-            return 0;
-        else if (category.equals("smartwatch"))
-            return 1;
-        else if (category.equals("laptop"))
-            return 2;
-        else if (category.equals("smartphone"))
-            return 3;
-        else if (category.equals("headphones"))
-            return 4;
-        else
-            return -1;
+        return switch (category) {
+            case "tv" -> 0;
+            case "smartwatch" -> 1;
+            case "laptop" -> 2;
+            case "smartphone" -> 3;
+            case "headphones" -> 4;
+            default -> -1;
+        };
     }
 
     /**
