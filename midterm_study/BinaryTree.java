@@ -63,12 +63,15 @@ public class BinaryTree<E> {
             return null;
     }
 
-    /**public E getData() {
-
-    }*/
+    /**
+     * public E getData() {
+     * 
+     * }
+     */
 
     /**
      * Determine whether this tree is a leaf
+     * 
      * @return true if the root has no children
      */
     public boolean isLeaf() {
@@ -77,6 +80,7 @@ public class BinaryTree<E> {
 
     /**
      * Convert a subtree to a string
+     * 
      * @return the string representation of the subtree
      */
     public String toString() {
@@ -88,20 +92,17 @@ public class BinaryTree<E> {
     /**
      * Preorder traversal from a given node
      *
-     * @param node the local root
+     * @param node  the local root
      * @param depth the depth
-     * @param sb   the string buffer to save the output
+     * @param sb    the string buffer to save the output
      */
-    private void preOrderTraverse(Node<E> node, int depth, StringBuilder sb) {
-        for(int i = 1; i < depth; i++)
-        {
+    public void preOrderTraverse(Node<E> node, int depth, StringBuilder sb) {
+        for (int i = 1; i < depth; i++) {
             sb.append(" ");
         }
-        if(node == null)
-        {
+        if (node == null) {
             sb.append("null\n");
-        }
-        else{
+        } else {
             sb.append(node.toString());
             sb.append("\n");
             preOrderTraverse(node.left, depth + 1, sb);
@@ -109,34 +110,50 @@ public class BinaryTree<E> {
         }
     }
 
-    public void preOrderOneLineTraverse(Node<E> node, StringBuilder sb){
-        if(node == null)
-        {
+    public void preOrderOneLineTraverse(Node<E> node, StringBuilder sb) {
+        if (node == null) {
             sb.append("null ");
-        }
-        else{
+        } else {
             sb.append(node.toString()).append(" ");
             preOrderOneLineTraverse(node.left, sb);
             preOrderOneLineTraverse(node.right, sb);
         }
     }
 
+    public void postOrderOneLineTraverse(Node<E> node, StringBuilder sb) {
+        if (node == null) {
+            sb.append("null ");
+        } else {
+            preOrderOneLineTraverse(node.left, sb);
+            preOrderOneLineTraverse(node.right, sb);
+            sb.append(node.toString()).append(" ");
+        }
+    }
+
+    public void inOrderOneLineTraverse(Node<E> node, StringBuilder sb) {
+        if (node != null) {
+            sb.append("(");
+            inOrderOneLineTraverse(node.left, sb);
+            sb.append(node.toString());
+            inOrderOneLineTraverse(node.right, sb);
+            sb.append(")");
+        }
+    }
+
     /**
      * Inorder traverse
+     * 
      * @param node
      * @param depth
      * @param sb
      */
     private void inOrderTraverse(Node<E> node, int depth, StringBuilder sb) {
-        for(int i = 1; i < depth; i++)
-        {
+        for (int i = 1; i < depth; i++) {
             sb.append(" ");
         }
-        if(node == null)
-        {
+        if (node == null) {
             sb.append("null\n");
-        }
-        else{
+        } else {
             preOrderTraverse(node.left, depth + 1, sb);
             sb.append(node.toString());
             sb.append("\n");
@@ -145,15 +162,12 @@ public class BinaryTree<E> {
     }
 
     private void postOrderTraverse(Node<E> node, int depth, StringBuilder sb) {
-        for(int i = 1; i < depth; i++)
-        {
+        for (int i = 1; i < depth; i++) {
             sb.append(" ");
         }
-        if(node == null)
-        {
+        if (node == null) {
             sb.append("null\n");
-        }
-        else{
+        } else {
             preOrderTraverse(node.left, depth + 1, sb);
             preOrderTraverse(node.right, depth + 1, sb);
             sb.append(node.toString());
@@ -161,18 +175,17 @@ public class BinaryTree<E> {
         }
     }
 
-
     /**
      * Method to read a binary tree
+     * 
      * @param scan the scanner to read from
      * @return the binary tree
      */
     public static BinaryTree<String> readBinaryTree(Scanner scan) {
         String data = scan.next();
-        if (data.equals("null")){
+        if (data.equals("null")) {
             return null;
-        }
-        else{
+        } else {
             BinaryTree<String> leftTree = readBinaryTree(scan);
             BinaryTree<String> rightTree = readBinaryTree(scan);
             return new BinaryTree<String>(data, leftTree, rightTree);
