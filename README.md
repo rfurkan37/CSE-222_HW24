@@ -3,7 +3,7 @@
 This repository contains the homework assignments and projects completed for the CSE222 (Data Structures and Algorithms) course.
 
 **Course:** CSE222 - Data Structures and Algorithms  
-**Institution:** University
+**Institution:** Gebze Technical University
 
 ## Overview
 
