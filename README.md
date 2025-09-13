@@ -2,10 +2,8 @@
 
 This repository contains the homework assignments and projects completed for the CSE222 (Data Structures and Algorithms) course.
 
-**Student:** Recep Furkan Akin  
-**Student ID:** 210104004042  
 **Course:** CSE222 - Data Structures and Algorithms  
-**Institution:** [Your University Name]  
+**Institution:** University
 
 ## Overview
 
@@ -19,9 +17,9 @@ This course covers fundamental data structures and algorithms in Java, including
 - **Files:** Source code in `src/`, compiled classes in `bin/`
 - **Technologies:** Java
 
-### Homework 2: [Title]
+### Homework 2: Algorithm Analysis Homework By Hand
 - **Location:** `assignments/hw2/`
-- **Description:** [Brief description if available]
+- **Description:** Analysis of various algorithms by hand, including time complexity and space complexity considerations.
 - **Files:** PDF documents and related materials
 
 ### Homework 3: Device Inventory Management

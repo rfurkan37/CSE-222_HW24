@@ -264,7 +264,7 @@ public class Inventory {
             writer.println("End of Report");
             writer.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println("Error exporting inventory report: " + e.getMessage());
         }
         System.out.println("Inventory report exported to inventory_report.txt");
     }

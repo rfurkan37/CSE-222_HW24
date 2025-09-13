@@ -26,7 +26,8 @@ public class Test {
             try {
                 Thread.sleep(1); // 1 millisecond delay
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.currentThread().interrupt(); // Restore interrupted status
+                System.err.println("Thread interrupted: " + e.getMessage());
             }
         }
 
@@ -56,7 +57,8 @@ public class Test {
                         try {
                             Thread.sleep(1); // 1 millisecond delay
                         } catch (InterruptedException e) {
-                            e.printStackTrace();
+                            Thread.currentThread().interrupt(); // Restore interrupted status
+                            System.err.println("Thread interrupted: " + e.getMessage());
                         }
                     }
                 }
@@ -72,7 +74,8 @@ public class Test {
         try {
             Thread.sleep(2000); // 2 seconds delay
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt(); // Restore interrupted status
+            System.err.println("Thread interrupted: " + e.getMessage());
         }
 
         // Test friend suggestions for a random person
@@ -83,7 +86,8 @@ public class Test {
         try {
             Thread.sleep(2000); // 2 seconds delay
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt(); // Restore interrupted status
+            System.err.println("Thread interrupted: " + e.getMessage());
         }
 
         // Test cluster counting
@@ -93,7 +97,8 @@ public class Test {
         try {
             Thread.sleep(2000); // 2 seconds delay
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt(); // Restore interrupted status
+            System.err.println("Thread interrupted: " + e.getMessage());
         }
     }
 }

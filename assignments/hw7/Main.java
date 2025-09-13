@@ -37,13 +37,11 @@ public class Main {
                 try {
                     processCommand(line, manager);
                 } catch (Exception e) {
-                    System.out.println("Error processing command: " + line);
-                    e.printStackTrace();
+                    System.err.println("Error processing command: " + line + " - " + e.getMessage());
                 }
             }
         } catch (IOException e) {
-            System.out.println("Error reading the file: " + inputFile);
-            e.printStackTrace();
+            System.err.println("Error reading the file: " + inputFile + " - " + e.getMessage());
         }
 
         // Perform a simple performance analysis
