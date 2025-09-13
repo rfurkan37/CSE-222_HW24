@@ -1,3 +1,56 @@
+# Compiled class files
+*.class
+
+# IntelliJ IDEA
+*.iml
+.idea/
+
+# VS Code
+.vscode/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# NetBeans
+nbproject/
+
+# Maven
+target/
+
+# Gradle
+.gradle/
+build/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Zone identifier files (Windows)
+*Zone.Identifier
+
+# Backup files
+*.bak
+*.backup
+
+# PDF and ZIP files (if generated, but keep if part of assignment)
+# *.pdf
+# *.zip
+
+# Specific files
 assignments/hw1/hw1.iml
-README.mdZone.Identifier
+README.md:Zone.Identifier
 .gitignore
